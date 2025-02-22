@@ -14,7 +14,8 @@
        8 times (instead of typing out "1fr" 8 times).
        repeat(...) is a special property that works with
        display: grid; */
-  grid-template-columns: repeat(8, 1fr);
+
+  grid-template-columns: repeat(8,1fr);
 }
 
 /* @media is used to create responsive design (making the
@@ -74,7 +75,7 @@
   border-right: 1px solid rgb(231, 231, 231);
   border-bottom: 1px solid rgb(231, 231, 231);
 
-  display: flex;
+  display:flex;
   flex-direction: column;
 }
 
