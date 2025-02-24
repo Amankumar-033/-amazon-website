@@ -1,5 +1,5 @@
-import {cart} from '../data/cart.js';
-
+import {cart,addTocart,updateCartQuantity} from '../data/cart.js';
+import {products} from '../data/products.js';
 
 let accumulator = '';
 products.forEach((product) => {
@@ -63,24 +63,8 @@ let cartQuantity = 0;
 document.querySelectorAll(".js-add-to-cart").forEach((button) => {
     button.addEventListener("click",() => {
         let productid = button.dataset.productId;
-
-        let matched;
-        cart.forEach((product)=>{
-            if(product.productid === productid)
-                matched = product;
-        });
-
-        if(matched){
-            matched.quantity += 1;
-        }
-        else{
-        cart.push({
-            productid : productid,
-            quantity: 1,
-        });
-        }
-
-        cartQuantity += 1;
-        document.querySelector(".js-cart-Quantity").innerHTML = cartQuantity;
+        addToCart(productid);
+        updateCartQuantity();
     });
 });
+
