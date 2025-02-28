@@ -1,5 +1,7 @@
-import {cart,addTocart,updateCartQuantity} from '../data/cart.js';
+import {cart, addToCart} from '../data/cart.js';
 import {products} from '../data/products.js';
+
+
 
 let accumulator = '';
 products.forEach((product) => {
@@ -59,10 +61,18 @@ products.forEach((product) => {
 
 document.querySelector(".js-products-grid").innerHTML = accumulator;
 
-let cartQuantity = 0;
+export let cartQuantity = 0;
+
+function updateCartQuantity(){
+  cartQuantity += 1;
+  document.querySelector(".js-cart-Quantity").innerHTML = cartQuantity;
+} 
+
+
 document.querySelectorAll(".js-add-to-cart").forEach((button) => {
     button.addEventListener("click",() => {
         let productid = button.dataset.productId;
+
         addToCart(productid);
         updateCartQuantity();
     });
