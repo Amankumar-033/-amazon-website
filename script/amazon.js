@@ -61,11 +61,14 @@ products.forEach((product) => {
 
 document.querySelector(".js-products-grid").innerHTML = accumulator;
 
-export let cartQuantity = 0;
+let cartQuantity = JSON.parse(localStorage.getItem('cartQuantity')) || 0;
+if(cartQuantity>0)
+  updateCartQuantity();
 
-function updateCartQuantity(){
-  cartQuantity += 1;
+
+export function updateCartQuantity(){
   document.querySelector(".js-cart-Quantity").innerHTML = cartQuantity;
+  localStorage.setItem('cartQuantity',JSON.stringify(cartQuantity));
 } 
 
 
@@ -74,6 +77,7 @@ document.querySelectorAll(".js-add-to-cart").forEach((button) => {
         let productid = button.dataset.productId;
 
         addToCart(productid);
+        cartQuantity+=1;
         updateCartQuantity();
     });
 });

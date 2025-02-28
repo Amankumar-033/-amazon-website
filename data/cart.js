@@ -11,6 +11,8 @@ function saveTolocalStorage(){
   localStorage.setItem('cart',JSON.stringify(cart));
 }
 
+
+let cartQuantity = 0;
 export function addToCart(productid){
     let matched = null;
       cart.forEach((product)=>{
@@ -29,6 +31,7 @@ export function addToCart(productid){
     }
 
     saveTolocalStorage();
+    
 }
 
 
@@ -42,7 +45,6 @@ export function removeElementFromCart(productid){
   cart = newcart;
 
   saveTolocalStorage();
+
+
 }
-
-
-
