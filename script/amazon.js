@@ -1,7 +1,9 @@
-import {cart, addToCart} from '../data/cart.js';
+import {cart,addToCart,cartQuantity} from '../data/cart.js';
 import {products} from '../data/products.js';
 
 
+
+window.onload = updateCartQuantity;
 
 let accumulator = '';
 products.forEach((product) => {
@@ -61,23 +63,17 @@ products.forEach((product) => {
 
 document.querySelector(".js-products-grid").innerHTML = accumulator;
 
-let cartQuantity = JSON.parse(localStorage.getItem('cartQuantity')) || 0;
-if(cartQuantity>0)
-  updateCartQuantity();
 
-
-export function updateCartQuantity(){
+function updateCartQuantity(){
   document.querySelector(".js-cart-Quantity").innerHTML = cartQuantity;
-  localStorage.setItem('cartQuantity',JSON.stringify(cartQuantity));
 } 
 
 
 document.querySelectorAll(".js-add-to-cart").forEach((button) => {
     button.addEventListener("click",() => {
+        console.log("aman kumar");
         let productid = button.dataset.productId;
-
         addToCart(productid);
-        cartQuantity+=1;
         updateCartQuantity();
     });
 });

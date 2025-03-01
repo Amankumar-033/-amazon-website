@@ -1,20 +1,22 @@
 export let cart = JSON.parse(localStorage.getItem('cart')) || [{
-  productId: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
-  quantity:2,
-},{
-  productId: "15b6fc6f-327a-4ec4-896f-486349e85a3d",
-  quantity:1,
-}];
+    productId: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
+    quantity:2,
+  },{
+    productId: "15b6fc6f-327a-4ec4-896f-486349e85a3d",
+    quantity:1,
+  }]; 
 
 
 function saveTolocalStorage(){
   localStorage.setItem('cart',JSON.stringify(cart));
+  localStorage.setItem('cartQuantity',JSON.stringify(cartQuantity));
 }
 
 
-let cartQuantity = 0;
+
+export let cartQuantity = JSON.parse(localStorage.getItem('cartQuantity')) || 0;
 export function addToCart(productid){
-    let matched = null;
+      let matched = null;
       cart.forEach((product)=>{
             if(product.productId === productid)
                 matched = product;
@@ -30,9 +32,21 @@ export function addToCart(productid){
         });
     }
 
-    saveTolocalStorage();
-    
+     cartQuantity += 1;
+     saveTolocalStorage();
 }
+
+
+export function calculateCartQuantity(){
+  let qnt = 0;
+  cart.forEach((item)=>{
+    qnt += item.quantity;
+  });
+
+  cartQuantity = qnt;
+  saveTolocalStorage();
+}
+
 
 
 export function removeElementFromCart(productid){
@@ -43,8 +57,7 @@ export function removeElementFromCart(productid){
   });
 
   cart = newcart;
-
-  saveTolocalStorage();
-
-
+  calculateCartQuantity();
 }
+
+
