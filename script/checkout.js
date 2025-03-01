@@ -169,3 +169,5 @@ document.querySelectorAll(".js-update-link").forEach((updatelink) => {
     calculateCartQuantity();
     updateCheckoutQuantity();
   }
+
+  
