@@ -1,7 +1,7 @@
 import {cart} from '../../data/cart.js';
 import { getProduct} from '../../data/products.js';
 import { getDeliveryOption } from '../../data/deliveryOption.js';
-
+import { cartQuantity } from '../../data/cart.js';
 
 function formatCurrency(cents){
     return (Math.round(cents)*0.01).toFixed(2);
@@ -31,7 +31,7 @@ export function renderPaymentSummary(){
           </div>
 
           <div class="payment-summary-row">
-            <div>Items (3):</div>
+            <div>Items (${cartQuantity}):</div>
             <div class="payment-summary-money">$${formatCurrency(priceCents)}</div>
           </div>
 
