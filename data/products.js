@@ -36,8 +36,8 @@ export async function loadProductsGrid(renderProductGrid){
 
     renderProductGrid();
   }
-  catch{
-    console.log("error request");
+  catch(error){
+    console.log("error request", error);
   }
 }
 
