@@ -1,3 +1,18 @@
+export let products = [];
+
+export function loadProductsGrid(renderProductGrid){
+  const xhr = new XMLHttpRequest();
+  xhr.open('GET','https://supersimplebackend.dev/products');
+  xhr.send();
+
+  xhr.addEventListener('load',()=>{
+    products = JSON.parse(xhr.response);
+
+    renderProductGrid();
+  });
+}
+
+
 export function getProduct(productid){
   let matching;
   products.forEach((productItem) => {
@@ -7,10 +22,8 @@ export function getProduct(productid){
 
   return matching;
 }
-
-
-
-export const products = [
+/*
+products = [
   {
     id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
     image: "images/products/athletic-cotton-socks-6-pairs.jpg",
@@ -671,3 +684,4 @@ export const products = [
   }
 ];
 
+*/

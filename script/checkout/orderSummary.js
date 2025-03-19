@@ -5,6 +5,7 @@ import { deliveryOptions,getDeliveryOption} from '../../data/deliveryOption.js';
 import { renderPaymentSummary } from './paymentSummary.js';
 
 
+
 export function renderOrderSummary(){
 
 updateCheckoutQuantity();
