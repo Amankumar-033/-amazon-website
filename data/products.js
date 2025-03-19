@@ -28,6 +28,8 @@ export  function loadProductsGrid(renderProductGrid){
 
 export async function loadProductsGrid(renderProductGrid){
   try{
+    throw "aman error";
+    
     let response = await fetch('https://supersimplebackend.dev/products');
 
     let responseData = await response.json();
