@@ -27,14 +27,18 @@ export  function loadProductsGrid(renderProductGrid){
 */
 
 export async function loadProductsGrid(renderProductGrid){
+  try{
+    let response = await fetch('https://supersimplebackend.dev/products');
 
-  let response = await fetch('https://supersimplebackend.dev/products');
+    let responseData = await response.json();
 
-  let responseData = await response.json();
+    products = responseData;
 
-  products = responseData;
-
-  renderProductGrid();
+    renderProductGrid();
+  }
+  catch{
+    console.log("error request");
+  }
 }
 
 export function getProduct(productid){
