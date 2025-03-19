@@ -1,5 +1,7 @@
 export let products = [];
 
+
+/*
 export function loadProductsGrid(renderProductGrid){
   const xhr = new XMLHttpRequest();
   xhr.open('GET','https://supersimplebackend.dev/products');
@@ -8,6 +10,17 @@ export function loadProductsGrid(renderProductGrid){
   xhr.addEventListener('load',()=>{
     products = JSON.parse(xhr.response);
 
+    renderProductGrid();
+  });
+}
+  */
+
+
+export function loadProductsGrid(renderProductGrid){
+  fetch('https://supersimplebackend.dev/products').then((response)=>{
+    return response.json();
+  }).then((responseData)=>{
+    products = responseData;
     renderProductGrid();
   });
 }
